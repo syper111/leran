@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تنظيم الدراسة - الموقع التعليمي</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">منصة التعليم الذكية</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="profile.html">الملف الشخصي</a></li>
+                <li><a href="admin.html">قسم الإدارة</a></li>
+                <li><a href="study-plan.html" class="active">تنظيم الدراسة</a></li>
+                <li><a href="ai-tool.html">ذكاء اصطناعي</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="study-plan-main">
+        <div class="study-plan-container">
+            <h1 class="page-title">تنظيم الدراسة</h1>
+            
+            <div class="plan-controls">
+                <button class="plan-btn active" onclick="showPlanType('weekly', this)">📅 الجدول الأسبوعي</button>
+                <button class="plan-btn" onclick="showPlanType('monthly', this)">📆 الجدول الشهري</button>
+                <button class="plan-btn" onclick="showPlanType('custom', this)">✏️ جدول مخصص</button>
+            </div>
+
+            <!-- الجدول الأسبوعي -->
+            <div class="plan-section" id="weeklyPlan">
+                <h2>الجدول الأسبوعي</h2>
+                <div class="week-selector">
+                    <button class="nav-btn" onclick="changeWeek(-1)">← الأسبوع السابق</button>
+                    <span id="currentWeek">الأسبوع الحالي</span>
+                    <button class="nav-btn" onclick="changeWeek(1)">الأسبوع القادم →</button>
+                </div>
+                <div class="weekly-schedule" id="weeklySchedule">
+                    <!-- الجدول الأسبوعي سيُضاف ديناميكياً -->
+                </div>
+                <button class="add-session-btn" onclick="addStudySession()">+ إضافة جلسة دراسة</button>
+            </div>
+
+            <!-- الجدول الشهري -->
+            <div class="plan-section" id="monthlyPlan" style="display: none;">
+                <h2>الجدول الشهري</h2>
+                <div class="month-selector">
+                    <button class="nav-btn" onclick="changeMonth(-1)">← الشهر السابق</button>
+                    <span id="currentMonth">يناير 2024</span>
+                    <button class="nav-btn" onclick="changeMonth(1)">الشهر القادم →</button>
+                </div>
+                <div class="monthly-calendar" id="monthlyCalendar">
+                    <!-- التقويم الشهري سيُضاف ديناميكياً -->
+                </div>
+            </div>
+
+            <!-- الجدول المخصص -->
+            <div class="plan-section" id="customPlan" style="display: none;">
+                <h2>إنشاء جدول مخصص</h2>
+                <form class="custom-plan-form" id="customPlanForm">
+                    <div class="form-group">
+                        <label for="planName">اسم الجدول</label>
+                        <input type="text" id="planName" placeholder="مثال: جدول التحضير للامتحان" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="planStartDate">تاريخ البداية</label>
+                        <input type="date" id="planStartDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="planEndDate">تاريخ النهاية</label>
+                        <input type="date" id="planEndDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="planSubject">المادة</label>
+                        <select id="planSubject" required>
+                            <option value="">اختر المادة</option>
+                            <option value="math">الرياضيات</option>
+                            <option value="physics">الفيزياء</option>
+                            <option value="chemistry">الكيمياء</option>
+                            <option value="biology">الأحياء</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="planHours">عدد الساعات اليومية</label>
+                        <input type="number" id="planHours" min="1" max="8" value="2" required>
+                    </div>
+                    <button type="submit" class="create-plan-btn">✅ إنشاء الجدول</button>
+                </form>
+            </div>
+
+            <!-- قائمة الجداول المحفوظة -->
+            <div class="saved-plans">
+                <h2>الجداول المحفوظة</h2>
+                <div class="plans-list" id="plansList">
+                    <div class="plan-card">
+                        <h3>جدول التحضير للامتحان النهائي</h3>
+                        <p>المادة: الرياضيات | المدة: 30 يوم</p>
+                        <div class="plan-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <span>65% مكتمل</span>
+                        </div>
+                        <div class="plan-actions">
+                            <button class="action-btn edit">تعديل</button>
+                            <button class="action-btn delete">حذف</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal لإضافة جلسة دراسة -->
+    <div class="modal" id="sessionModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSessionModal()">&times;</span>
+            <h2>إضافة جلسة دراسة</h2>
+            <form id="sessionForm">
+                <div class="form-group">
+                    <label for="sessionSubject">المادة</label>
+                    <select id="sessionSubject" required>
+                        <option value="">اختر المادة</option>
+                        <option value="math">الرياضيات</option>
+                        <option value="physics">الفيزياء</option>
+                        <option value="chemistry">الكيمياء</option>
+                        <option value="biology">الأحياء</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sessionDate">التاريخ</label>
+                    <input type="date" id="sessionDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="sessionTime">الوقت</label>
+                    <input type="time" id="sessionTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="sessionDuration">المدة (بالساعات)</label>
+                    <input type="number" id="sessionDuration" min="0.5" max="8" step="0.5" value="2" required>
+                </div>
+                <button type="submit" class="submit-btn">إضافة</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 الموقع التعليمي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="study-plan.js"></script>
+</body>
+</html>
+
+
+

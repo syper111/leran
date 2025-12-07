@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قسم الإدارة - الموقع التعليمي</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">منصة التعليم الذكية</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="profile.html">الملف الشخصي</a></li>
+                <li><a href="admin.html" class="active">قسم الإدارة</a></li>
+                <li><a href="study-plan.html">تنظيم الدراسة</a></li>
+                <li><a href="ai-tool.html">ذكاء اصطناعي</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="admin-main">
+        <div class="admin-container">
+            <h1 class="admin-title">لوحة التحكم - قسم الإدارة</h1>
+            
+            <div class="admin-cards">
+                <div class="admin-card">
+                    <div class="card-icon">👥</div>
+                    <h3>إدارة المستخدمين</h3>
+                    <p>عرض وإدارة حسابات المستخدمين</p>
+                    <button class="admin-btn" onclick="showSection('users')">فتح</button>
+                </div>
+
+                <div class="admin-card">
+                    <div class="card-icon">📚</div>
+                    <h3>إدارة المحتوى</h3>
+                    <p>إضافة وتعديل الدروس والفيديوهات</p>
+                    <button class="admin-btn" onclick="showSection('content')">فتح</button>
+                </div>
+
+                <div class="admin-card">
+                    <div class="card-icon">📊</div>
+                    <h3>الإحصائيات</h3>
+                    <p>عرض إحصائيات الموقع والأداء</p>
+                    <button class="admin-btn" onclick="showSection('stats')">فتح</button>
+                </div>
+
+                <div class="admin-card">
+                    <div class="card-icon">⚙️</div>
+                    <h3>الإعدادات</h3>
+                    <p>تعديل إعدادات الموقع العامة</p>
+                    <button class="admin-btn" onclick="showSection('settings')">فتح</button>
+                </div>
+            </div>
+
+            <!-- قسم إدارة المستخدمين -->
+            <div class="admin-section" id="usersSection" style="display: none;">
+                <h2>إدارة المستخدمين</h2>
+                <div class="section-controls">
+                    <input type="text" id="searchUsers" placeholder="🔍 البحث عن مستخدم..." class="search-input">
+                    <button class="add-btn" onclick="addNewUser()">+ إضافة مستخدم جديد</button>
+                </div>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>الاسم</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>الصف</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- البيانات ستُضاف ديناميكياً من JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- قسم إدارة المحتوى -->
+            <div class="admin-section" id="contentSection" style="display: none;">
+                <h2>إدارة المحتوى</h2>
+                <div class="section-controls">
+                    <select id="contentGrade" class="select-input">
+                        <option value="">جميع الصفوف</option>
+                        <option value="1">الصف الأول</option>
+                        <option value="12">التوجيهي</option>
+                    </select>
+                    <button class="add-btn" onclick="addNewContent()">+ إضافة محتوى جديد</button>
+                </div>
+                <div class="content-list" id="contentList">
+                    <div class="content-item">
+                        <div class="content-info">
+                            <h4>شرح مادة الرياضيات - الصف الأول</h4>
+                            <p>الدرس الأول: الأعداد الطبيعية</p>
+                            <span class="content-meta">تم النشر: 2024-01-15</span>
+                        </div>
+                        <div class="content-actions">
+                            <button class="action-btn edit">تعديل</button>
+                            <button class="action-btn delete">حذف</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم الإحصائيات -->
+            <div class="admin-section" id="statsSection" style="display: none;">
+                <h2>الإحصائيات</h2>
+                <div class="stats-grid-admin">
+                    <div class="stat-card-admin">
+                        <h3>إجمالي المستخدمين</h3>
+                        <div class="stat-value">1,234</div>
+                        <div class="stat-change positive">+12% هذا الشهر</div>
+                    </div>
+                    <div class="stat-card-admin">
+                        <h3>إجمالي الفيديوهات</h3>
+                        <div class="stat-value">456</div>
+                        <div class="stat-change positive">+8 هذا الشهر</div>
+                    </div>
+                    <div class="stat-card-admin">
+                        <h3>المشاهدات</h3>
+                        <div class="stat-value">12,345</div>
+                        <div class="stat-change positive">+25% هذا الشهر</div>
+                    </div>
+                    <div class="stat-card-admin">
+                        <h3>المستخدمون النشطون</h3>
+                        <div class="stat-value">890</div>
+                        <div class="stat-change positive">+15% هذا الشهر</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم الإعدادات -->
+            <div class="admin-section" id="settingsSection" style="display: none;">
+                <h2>الإعدادات</h2>
+                <div class="settings-form">
+                    <div class="setting-item">
+                        <label>اسم الموقع</label>
+                        <input type="text" value="الموقع التعليمي" class="setting-input">
+                    </div>
+                    <div class="setting-item">
+                        <label>البريد الإلكتروني للدعم</label>
+                        <input type="email" value="support@example.com" class="setting-input">
+                    </div>
+                    <div class="setting-item">
+                        <label>تفعيل الإشعارات</label>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>الحد الأقصى لحجم الفيديو (MB)</label>
+                        <input type="number" value="500" class="setting-input">
+                    </div>
+                    <button class="save-settings-btn">💾 حفظ الإعدادات</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 الموقع التعليمي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
+

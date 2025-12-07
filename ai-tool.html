@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أداة الذكاء الاصطناعي - الموقع التعليمي</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">منصة التعليم الذكية</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="profile.html">الملف الشخصي</a></li>
+                <li><a href="admin.html">قسم الإدارة</a></li>
+                <li><a href="study-plan.html">تنظيم الدراسة</a></li>
+                <li><a href="ai-tool.html" class="active">ذكاء اصطناعي</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="ai-main">
+        <div class="ai-container">
+            <div class="ai-header">
+                <h1 class="ai-title">🤖 مساعد الذكاء الاصطناعي التعليمي</h1>
+                <p class="ai-subtitle">اسألني أي سؤال تعليمي وسأجيبك فوراً!</p>
+            </div>
+
+            <div class="ai-chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <p>مرحباً! أنا مساعدك التعليمي الذكي. يمكنني مساعدتك في:</p>
+                            <ul>
+                                <li>شرح الدروس والمواد الدراسية</li>
+                                <li>حل المسائل الرياضية والعلمية</li>
+                                <li>الإجابة على أسئلتك التعليمية</li>
+                                <li>تقديم نصائح للدراسة</li>
+                            </ul>
+                            <p>كيف يمكنني مساعدتك اليوم؟</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="userInput" 
+                            class="chat-input" 
+                            placeholder="اكتب سؤالك هنا..."
+                            autocomplete="off"
+                        >
+                        <button id="sendButton" class="send-btn">
+                            <span>إرسال</span>
+                            <span class="send-icon">📤</span>
+                        </button>
+                    </div>
+                    <div class="quick-questions">
+                        <span class="quick-label">أسئلة سريعة:</span>
+                        <button class="quick-btn" onclick="askQuickQuestion('شرح درس الرياضيات')">شرح درس الرياضيات</button>
+                        <button class="quick-btn" onclick="askQuickQuestion('كيف أذاكر بفعالية؟')">كيف أذاكر بفعالية؟</button>
+                        <button class="quick-btn" onclick="askQuickQuestion('حل مسألة فيزياء')">حل مسألة فيزياء</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-features">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>شرح الدروس</h3>
+                    <p>شرح مفصل لجميع المواد الدراسية</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <h3>حل المسائل</h3>
+                    <p>حل خطوة بخطوة للمسائل العلمية</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>نصائح الدراسة</h3>
+                    <p>نصائح ذكية لتحسين أدائك الدراسي</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 الموقع التعليمي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="ai-tool.js"></script>
+</body>
+</html>
+

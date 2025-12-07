@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموقع التعليمي - الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">منصة التعليم الذكية</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">الرئيسية</a></li>
+                <li><a href="profile.html">الملف الشخصي</a></li>
+                <li><a href="admin.html">قسم الإدارة</a></li>
+                <li><a href="study-plan.html">تنظيم الدراسة</a></li>
+                <li><a href="ai-tool.html">ذكاء اصطناعي</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>مرحباً بك في منصة التعليم الذكية</h1>
+            <p>تعلم بسهولة مع أفضل الشروحات التعليمية للصفوف من الأول إلى التوجيهي</p>
+            <div class="hero-buttons">
+                <button class="hero-btn primary" onclick="scrollToGrades()">ابدأ التعلم الآن</button>
+                <button class="hero-btn secondary" onclick="window.location.href='ai-tool.html'">استخدم الذكاء الاصطناعي</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="stat-number" data-target="1000">0</div>
+                    <div class="stat-label">درس تعليمي</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">فيديو شرح</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-label">معلم محترف</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="10000">0</div>
+                    <div class="stat-label">طالب نشط</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- قسم البحث السريع -->
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" id="quickSearch" class="search-input" placeholder="🔍 ابحث عن درس، مادة، أو موضوع...">
+                <button class="search-btn">بحث</button>
+            </div>
+        </section>
+
+        <!-- قسم الصفوف -->
+        <section class="grades-section">
+            <h2 class="section-title">اختر صفك الدراسي</h2>
+            <div class="grades-container" id="gradesContainer">
+                <!-- الصفوف ستُضاف ديناميكياً -->
+            </div>
+        </section>
+
+        <!-- قسم أحدث الدروس -->
+        <section class="latest-lessons">
+            <h2 class="section-title">أحدث الدروس المضافة</h2>
+            <div class="lessons-grid" id="latestLessons">
+                <!-- الدروس ستُضاف ديناميكياً -->
+            </div>
+        </section>
+
+        <!-- قسم الأكثر مشاهدة -->
+        <section class="popular-section">
+            <h2 class="section-title">الأكثر مشاهدة</h2>
+            <div class="popular-grid" id="popularLessons">
+                <!-- الدروس الأكثر مشاهدة -->
+            </div>
+        </section>
+
+        <!-- قسم المواد المميزة -->
+        <section class="featured-section">
+            <h2 class="section-title">مواد مميزة</h2>
+            <div class="featured-container">
+                <div class="featured-card">
+                    <div class="featured-icon">📐</div>
+                    <h3>الرياضيات</h3>
+                    <p>شروحات مفصلة لجميع فروع الرياضيات</p>
+                    <div class="featured-stats">
+                        <span>150+ درس</span>
+                        <span>50+ فيديو</span>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-icon">⚛️</div>
+                    <h3>الفيزياء</h3>
+                    <p>تجارب وتطبيقات عملية للمفاهيم الفيزيائية</p>
+                    <div class="featured-stats">
+                        <span>120+ درس</span>
+                        <span>40+ فيديو</span>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-icon">🧪</div>
+                    <h3>الكيمياء</h3>
+                    <p>تفاعلات كيميائية وتجارب معملية</p>
+                    <div class="featured-stats">
+                        <span>100+ درس</span>
+                        <span>35+ فيديو</span>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-icon">🔬</div>
+                    <h3>الأحياء</h3>
+                    <p>دراسة الكائنات الحية والأنظمة البيولوجية</p>
+                    <div class="featured-stats">
+                        <span>90+ درس</span>
+                        <span>30+ فيديو</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal لعرض المواد -->
+        <div class="modal" id="subjectsModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">المواد العلمية</h2>
+                <div class="subjects-grid" id="subjectsGrid">
+                    <!-- المواد ستُضاف ديناميكياً -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>عن المنصة</h3>
+                <p style="color: #aaa; line-height: 1.8;">
+                    منصة تعليمية شاملة تقدم أفضل الشروحات والدروس للطلاب من الصف الأول حتى التوجيهي. نهدف لتحسين تجربة التعلم باستخدام أحدث التقنيات.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الصفحة الرئيسية</a></li>
+                    <li><a href="profile.html">الملف الشخصي</a></li>
+                    <li><a href="study-plan.html">تنظيم الدراسة</a></li>
+                    <li><a href="ai-tool.html">ذكاء اصطناعي</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>المواد الدراسية</h3>
+                <ul>
+                    <li><a href="#">الرياضيات</a></li>
+                    <li><a href="#">الفيزياء</a></li>
+                    <li><a href="#">الكيمياء</a></li>
+                    <li><a href="#">الأحياء</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <ul>
+                    <li>📧 info@education.com</li>
+                    <li>📱 +962 7XX XXX XXX</li>
+                    <li>🌐 www.education.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 منصة التعليم الذكية. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
